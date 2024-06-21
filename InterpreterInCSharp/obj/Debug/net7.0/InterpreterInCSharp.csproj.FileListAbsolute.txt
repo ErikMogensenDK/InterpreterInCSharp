@@ -1,0 +1,14 @@
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\bin\Debug\net7.0\InterpreterInCSharp.exe
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\bin\Debug\net7.0\InterpreterInCSharp.deps.json
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\bin\Debug\net7.0\InterpreterInCSharp.runtimeconfig.json
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\bin\Debug\net7.0\InterpreterInCSharp.dll
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\bin\Debug\net7.0\InterpreterInCSharp.pdb
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\obj\Debug\net7.0\InterpreterInCSharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\obj\Debug\net7.0\InterpreterInCSharp.AssemblyInfoInputs.cache
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\obj\Debug\net7.0\InterpreterInCSharp.AssemblyInfo.cs
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\obj\Debug\net7.0\InterpreterInCSharp.csproj.CoreCompileInputs.cache
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\obj\Debug\net7.0\InterpreterInCSharp.dll
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\obj\Debug\net7.0\refint\InterpreterInCSharp.dll
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\obj\Debug\net7.0\InterpreterInCSharp.pdb
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\obj\Debug\net7.0\InterpreterInCSharp.genruntimeconfig.cache
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\obj\Debug\net7.0\ref\InterpreterInCSharp.dll
