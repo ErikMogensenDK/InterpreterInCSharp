@@ -97,3 +97,9 @@ C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\obj\Debug\net7.0\re
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\obj\Debug\net7.0\InterpreterInCSharp.Tests.pdb
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\obj\Debug\net7.0\InterpreterInCSharp.Tests.genruntimeconfig.cache
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\obj\Debug\net7.0\ref\InterpreterInCSharp.Tests.dll
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\bin\Debug\net7.0\CoverletSourceRootsMapping
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\bin\Debug\net7.0\InterpreterInCSharp.deps.json
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\bin\Debug\net7.0\InterpreterInCSharp.runtimeconfig.json
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\bin\Debug\net7.0\InterpreterInCSharp.exe
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\bin\Debug\net7.0\InterpreterInCSharp.dll
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\bin\Debug\net7.0\InterpreterInCSharp.pdb

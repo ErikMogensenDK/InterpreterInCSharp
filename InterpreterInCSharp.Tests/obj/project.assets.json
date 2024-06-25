@@ -594,6 +594,16 @@
             "related": ".xml"
           }
         }
+      },
+      "InterpreterInCSharp/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/InterpreterInCSharp.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InterpreterInCSharp.dll": {}
+        }
       }
     }
   },
@@ -2286,10 +2296,16 @@
         "system.threading.tasks.4.3.0.nupkg.sha512",
         "system.threading.tasks.nuspec"
       ]
+    },
+    "InterpreterInCSharp/1.0.0": {
+      "type": "project",
+      "path": "../InterpreterInCSharp/InterpreterInCSharp.csproj",
+      "msbuildProject": "../InterpreterInCSharp/InterpreterInCSharp.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "InterpreterInCSharp >= 1.0.0",
       "MSTest.TestAdapter >= 2.2.10",
       "MSTest.TestFramework >= 2.2.10",
       "Microsoft.NET.Test.Sdk >= 17.7.1",
@@ -2323,7 +2339,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\erikm\\InterpreterInCSharp\\InterpreterInCSharp\\InterpreterInCSharp.csproj": {
+              "projectPath": "C:\\Users\\erikm\\InterpreterInCSharp\\InterpreterInCSharp\\InterpreterInCSharp.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
