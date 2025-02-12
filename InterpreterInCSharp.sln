@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterpreterInCSharp", "Inte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterpreterInCSharp.Tests", "InterpreterInCSharp.Tests\InterpreterInCSharp.Tests.csproj", "{065B6CAC-DC86-41CD-B78F-E6029CA9A5D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LexerTests", "LexerTests\LexerTests.csproj", "{505E4854-7F70-4FDA-983E-952ADB2AE48A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

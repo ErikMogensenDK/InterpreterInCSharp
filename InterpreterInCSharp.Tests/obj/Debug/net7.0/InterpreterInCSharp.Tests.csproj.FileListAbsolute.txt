@@ -91,7 +91,6 @@ C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\obj\Debug\net7.0\In
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\obj\Debug\net7.0\InterpreterInCSharp.Tests.AssemblyInfoInputs.cache
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\obj\Debug\net7.0\InterpreterInCSharp.Tests.AssemblyInfo.cs
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\obj\Debug\net7.0\InterpreterInCSharp.Tests.csproj.CoreCompileInputs.cache
-C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\obj\Debug\net7.0\InterpreterInCSharp.Tests.csproj.CopyComplete
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\obj\Debug\net7.0\InterpreterInCSharp.Tests.dll
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\obj\Debug\net7.0\refint\InterpreterInCSharp.Tests.dll
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\obj\Debug\net7.0\InterpreterInCSharp.Tests.pdb
@@ -103,3 +102,5 @@ C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\bin\Debug\net7.0\In
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\bin\Debug\net7.0\InterpreterInCSharp.exe
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\bin\Debug\net7.0\InterpreterInCSharp.dll
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\bin\Debug\net7.0\InterpreterInCSharp.pdb
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\obj\Debug\net7.0\InterpreterInCSharp.Tests.sourcelink.json
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp.Tests\obj\Debug\net7.0\Interpre.2B3C6692.Up2Date

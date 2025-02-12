@@ -1,23 +1,56 @@
-
 namespace InterpreterInCSharp;
 public struct Token
 {
-    public string TokenType;
-    public string literal;
+    public TokenType Type;
+    public string? Literal;
+}
+public enum TokenType
+{
+    ILLEGAL,
+    EOF,
 
-    public const string ILLEGAL = "ILLEGAL";
-    public const string EOF = "EOF";
+    // identifiers/literals
+    IDENT,
+    INT,
 
-    //identifiers
-    public const string IDENT = "IDENT";
-    public const string INT = "INT";
+    // operators
+    ASSIGN,
+    PLUS,
 
-    //operators
-    public const string ASSIGN = "=";
-    public const string PLUS = "+";
+    // delimiters
+    COMMA,
+    SEMICOLON,
 
-    //delimiters
-    public const string COMMA = ",";
-    public const string SEMICOLON = ";";
+    LPARAN,
+    RPARAN,
+    LBRACE,
+    RBRACE,
 
+    //keywords
+    FUNCTION,
+    LET
+}
+public static class TokenExtensions
+{
+    public static readonly Dictionary<TokenType, string> tokenTypeToStringDict = new()
+    {
+        {TokenType.ILLEGAL, "ILLEGAL"},
+        {TokenType.EOF, "EOF"},
+        {TokenType.IDENT, "IDENT"},
+        {TokenType.INT, "INT"},
+        {TokenType.ASSIGN, "="},
+        {TokenType.PLUS, "+"},
+        {TokenType.COMMA, ","},
+        {TokenType.SEMICOLON, ";"},
+        {TokenType.LPARAN,"("},
+        {TokenType.RPARAN,")"},
+        {TokenType.LBRACE, "{"},
+        {TokenType.RBRACE, "}"},
+        {TokenType.FUNCTION, "FUNCTION"},
+        {TokenType.LET, "LET"}
+    };
+    public static string ToLiteral(this TokenType tokenType)
+    {
+        return tokenTypeToStringDict[tokenType];
+    }
 }

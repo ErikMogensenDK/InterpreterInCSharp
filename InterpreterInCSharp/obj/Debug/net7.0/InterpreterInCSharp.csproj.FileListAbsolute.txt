@@ -12,3 +12,4 @@ C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\obj\Debug\net7.0\refint\I
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\obj\Debug\net7.0\InterpreterInCSharp.pdb
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\obj\Debug\net7.0\InterpreterInCSharp.genruntimeconfig.cache
 C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\obj\Debug\net7.0\ref\InterpreterInCSharp.dll
+C:\Users\erikm\InterpreterInCSharp\InterpreterInCSharp\obj\Debug\net7.0\InterpreterInCSharp.sourcelink.json
