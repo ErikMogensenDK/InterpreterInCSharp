@@ -23,9 +23,9 @@ public class LexerTests
         for (int i = 0; i < input.Length; i++)
         {
             Token currentToken = lexer.NextToken();
-            expectedTokens[i].Literal.ShouldBeEqualTo(currentToken.Literal);
 #pragma warning disable CS8604 // Possible null reference argument.
-            expectedTokens[i].ToString().ShouldBeEqualTo(currentToken.ToString());
+            expectedTokens[i].Literal.ShouldBeEqualTo(currentToken.Literal);
+            Assert.AreEqual(expectedTokens[i].Type, currentToken.Type);
 #pragma warning restore CS8604 // Possible null reference argument.
         }
     }
