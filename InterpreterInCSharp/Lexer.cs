@@ -1,3 +1,6 @@
+
+
+
 namespace InterpreterInCSharp;
 
 public class Lexer
@@ -5,7 +8,7 @@ public class Lexer
     private string _input; 
     private int _position;
     private int _readPosition; 
-    public string? CurrentSymbol { get; set; }
+    public char _currentSymbol; 
 
     public Lexer(string input)
     {
@@ -13,73 +16,133 @@ public class Lexer
         _readPosition = 0;
         ReadChar();
     }
+
     private void ReadChar()
     {
         if (_input.Length <= _readPosition)
-        {
-            CurrentSymbol = null;
-        }
+            _currentSymbol = '\xff';
         else
-        {
-            CurrentSymbol = _input[_readPosition].ToString();
-        }
+            _currentSymbol = _input[_readPosition];
         _position = _readPosition;
         _readPosition++;
+        // if (_currentSymbol == ' ')
+        //     ReadChar();
     }
+
     public Token NextToken()
     {
         Token token = new();
-        token.Literal = CurrentSymbol;
-        switch (CurrentSymbol)
+        SkipWhiteSpace();
+        switch (_currentSymbol)
         {
-            case "=":
-            {
-                token.Type = TokenType.ASSIGN;
-                break;
-            }
-            case "(":
-            {
-                token.Type = TokenType.LPARAN;
-                break;
-            }
-            case ")":
-            {
-                token.Type = TokenType.RPARAN;
-                break;
-            }
-            case "{":
-            {
-                token.Type = TokenType.LBRACE;
-                break;
-            }
-            case "}":
-            {
-                token.Type = TokenType.RBRACE;
-                break;
-            }
-            case ",":
-            {
-                token.Type = TokenType.COMMA;
-                break;
-            }
-            case ";":
-            {
-                token.Type = TokenType.SEMICOLON;
-                break;
-            }
-            case "+":
-            {
-                token.Type = TokenType.PLUS;
-                break;
-            }
+            case '=':
+                {
+                    token = new(TokenType.ASSIGN, _currentSymbol.ToString());
+                    break;
+                }
+            case '(':
+                {
+                    token = new(TokenType.LPAREN, _currentSymbol.ToString());
+                    break;
+                }
+            case ')':
+                {
+                    token = new(TokenType.RPAREN, _currentSymbol.ToString());
+                    break;
+                }
+            case '{':
+                {
+                    token = new(TokenType.LBRACE, _currentSymbol.ToString());
+                    break;
+                }
+            case '}':
+                {
+                    token = new(TokenType.RBRACE, _currentSymbol.ToString());
+                    break;
+                }
+            case ',':
+                {
+                    token = new(TokenType.COMMA, _currentSymbol.ToString());
+                    break;
+                }
+            case ';':
+                {
+                    token = new(TokenType.SEMICOLON, _currentSymbol.ToString());
+                    break;
+                }
+            case '+':
+                {
+                    token = new(TokenType.PLUS, _currentSymbol.ToString());
+                    break;
+                }
+            case '\xff':
+                {
+                    token = new(TokenType.EOF, "");
+                    break;
+                }
             default:
-            {
-                token.Type = TokenType.EOF;
-                token.Literal = "";
-                break;
-            }
+                {
+                    if (IsLetter(_currentSymbol))
+                    {
+                        string identifier = ReadIdentifier();
+                        var type = Token.LookUpIdentifier(identifier);
+                        return new(type, identifier); //early return nescessary, since ReadChar was already called by "ReadIdentifier"
+                    }
+                    else if (IsDigit(_currentSymbol))
+                    {
+                        string digit = ReadDigit();
+                        return new(TokenType.INT, digit);
+                    }
+                    else
+                    {
+                        token = new(TokenType.ILLEGAL, _currentSymbol.ToString());
+                    }
+                    break;
+                }
         }
         ReadChar();
         return token;
+    }
+
+    private string ReadDigit()
+    {
+        var startPosition = _position; 
+        while (IsDigit(_currentSymbol))
+        {
+            ReadChar();
+        }
+        return _input[startPosition .. _position];
+    }
+
+    private bool IsDigit(char currentSymbol)
+    {
+        if (char.IsDigit(currentSymbol))
+            return true;
+        return false;
+    }
+
+    private void SkipWhiteSpace()
+    {
+        while (_currentSymbol == ' ' || _currentSymbol == '\n' || _currentSymbol == '\r' || _currentSymbol == '\t')
+            ReadChar();
+    }
+
+    private string ReadIdentifier()
+    {
+        var startPosition = _position; 
+        while (IsLetter(_currentSymbol))
+        {
+            ReadChar();
+        }
+        return _input[startPosition .. _position];
+    }
+
+    private bool IsLetter(char someChar)
+    {
+        if (char.IsLetter(someChar))
+            return true;
+        if (someChar == '_')
+            return true;
+        return false;
     }
 }
