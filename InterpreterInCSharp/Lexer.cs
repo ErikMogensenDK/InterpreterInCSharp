@@ -37,7 +37,15 @@ public class Lexer
         {
             case '=':
                 {
-                    token = new(TokenType.ASSIGN, _currentSymbol.ToString());
+                    if(PeekChar() == '=')
+                    {
+                        token = new(TokenType.EQ, "==");
+                        ReadChar();
+                    }
+                    else
+                    {
+                        token = new(TokenType.ASSIGN, _currentSymbol.ToString());
+                    }
                     break;
                 }
             case '(':
@@ -78,6 +86,42 @@ public class Lexer
             case '\xff':
                 {
                     token = new(TokenType.EOF, "");
+                    break;
+                }
+            case '-':
+                {
+                    token = new(TokenType.MINUS, "-");
+                    break;
+                }
+            case '!':
+                {
+                    if(PeekChar() == '=')
+                    {
+                        token = new(TokenType.NOT_EQ, "!=");
+                        ReadChar();
+                    }
+                    else
+                        token = new(TokenType.BANG, "!");
+                    break;
+                }
+            case '*':
+                {
+                    token = new(TokenType.ASTERISK, "*");
+                    break;
+                }
+            case '/':
+                {
+                    token = new(TokenType.SLASH, "/");
+                    break;
+                }
+            case '<':
+                {
+                    token = new(TokenType.LT, "<");
+                    break;
+                }
+            case '>':
+                {
+                    token = new(TokenType.GT, ">");
                     break;
                 }
             default:
@@ -144,5 +188,13 @@ public class Lexer
         if (someChar == '_')
             return true;
         return false;
+    }
+
+    private char PeekChar()
+    {
+        if (_readPosition >= _input.Length)
+            return '\xff';
+        else
+            return _input[_readPosition];
     }
 }

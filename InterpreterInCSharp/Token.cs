@@ -4,7 +4,15 @@ public struct Token
 {
     public TokenType Type;
     public string? Literal;
-    private static Dictionary<string, TokenType> _keyWords = new(){{"let", TokenType.LET}, {"fn", TokenType.FUNCTION}};
+    private static Dictionary<string, TokenType> _keyWords = new(){
+        {"let", TokenType.LET}, 
+        {"fn", TokenType.FUNCTION},
+        {"true", TokenType.TRUE},
+        {"false", TokenType.FALSE},
+        {"if", TokenType.IF},
+        {"else", TokenType.ELSE},
+        {"return", TokenType.RETURN}
+        };
     public Token(TokenType type, string? literal)
     {
         Type = type;
@@ -31,6 +39,13 @@ public enum TokenType
     // operators
     ASSIGN,
     PLUS,
+    MINUS,
+    BANG,
+    ASTERISK,
+    SLASH,
+
+    LT,
+    GT,
 
     // delimiters
     COMMA,
@@ -43,7 +58,14 @@ public enum TokenType
 
     //keywords
     FUNCTION,
-    LET
+    LET,
+    IF,
+    RETURN,
+    TRUE,
+    ELSE,
+    FALSE,
+    EQ,
+    NOT_EQ
 }
 // public static class TokenExtensions
 // {
