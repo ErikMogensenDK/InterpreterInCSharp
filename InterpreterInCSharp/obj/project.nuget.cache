@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oo5D32oqpbU=",
+  "dgSpecHash": "TKC/Ra+yvsk=",
   "success": true,
   "projectFilePath": "C:\\Users\\erikm\\InterpreterInCSharp\\InterpreterInCSharp\\InterpreterInCSharp.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\erikm\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.12\\microsoft.netcore.app.ref.8.0.12.nupkg.sha512",
-    "C:\\Users\\erikm\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.12\\microsoft.windowsdesktop.app.ref.8.0.12.nupkg.sha512",
-    "C:\\Users\\erikm\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.12\\microsoft.aspnetcore.app.ref.8.0.12.nupkg.sha512",
-    "C:\\Users\\erikm\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.12\\microsoft.netcore.app.host.win-x64.8.0.12.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
