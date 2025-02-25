@@ -1,6 +1,3 @@
-
-
-
 namespace InterpreterInCSharp;
 
 public class Lexer
@@ -20,13 +17,11 @@ public class Lexer
     private void ReadChar()
     {
         if (_input.Length <= _readPosition)
-            _currentSymbol = '\xff';
+            _currentSymbol = '\xff'; // \xff is used as stand-in for null, since char cannot be null
         else
             _currentSymbol = _input[_readPosition];
         _position = _readPosition;
         _readPosition++;
-        // if (_currentSymbol == ' ')
-        //     ReadChar();
     }
 
     public Token NextToken()
@@ -126,13 +121,13 @@ public class Lexer
                 }
             default:
                 {
-                    if (IsLetter(_currentSymbol))
+                    if (char.IsLetter(_currentSymbol) || _currentSymbol == '_')
                     {
                         string identifier = ReadIdentifier();
                         var type = Token.LookUpIdentifier(identifier);
                         return new(type, identifier); //early return nescessary, since ReadChar was already called by "ReadIdentifier"
                     }
-                    else if (IsDigit(_currentSymbol))
+                    else if (char.IsDigit(_currentSymbol))
                     {
                         string digit = ReadDigit();
                         return new(TokenType.INT, digit);
@@ -151,18 +146,11 @@ public class Lexer
     private string ReadDigit()
     {
         var startPosition = _position; 
-        while (IsDigit(_currentSymbol))
+        while (char.IsDigit(_currentSymbol))
         {
             ReadChar();
         }
         return _input[startPosition .. _position];
-    }
-
-    private bool IsDigit(char currentSymbol)
-    {
-        if (char.IsDigit(currentSymbol))
-            return true;
-        return false;
     }
 
     private void SkipWhiteSpace()
@@ -174,20 +162,11 @@ public class Lexer
     private string ReadIdentifier()
     {
         var startPosition = _position; 
-        while (IsLetter(_currentSymbol))
+        while (char.IsLetter(_currentSymbol) || _currentSymbol == '_')
         {
             ReadChar();
         }
         return _input[startPosition .. _position];
-    }
-
-    private bool IsLetter(char someChar)
-    {
-        if (char.IsLetter(someChar))
-            return true;
-        if (someChar == '_')
-            return true;
-        return false;
     }
 
     private char PeekChar()
