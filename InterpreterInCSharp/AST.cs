@@ -178,3 +178,81 @@ public enum Precedence
 	PREFIX, 	// -X or !X
 	CALL 		// myFunction(X)
 }
+
+public class IntegerLiteral : IExpression
+{
+	public Token Token;
+	public int Value;
+
+    public void ExpressionNode()
+    {
+        throw new NotImplementedException();
+    }
+
+    public string String()
+    {
+		return Token.Literal;
+    }
+
+    public string TokenLiteral()
+    {
+		return Token.Literal;
+    }
+}
+
+
+public class PrefixExpression : IExpression
+{
+	public Token Token;
+	public string Operator;
+	public IExpression Right;
+
+    public void ExpressionNode()
+    {
+        throw new NotImplementedException();
+    }
+
+    public string String()
+    {
+		return Token.Literal;
+    }
+
+    public string TokenLiteral()
+    {
+		string myString = "";
+		myString += $"(";
+		myString += Operator;
+		myString += Right.String();
+		myString += $")";
+		return myString;
+    }
+}
+
+public class InfixExpression : IExpression
+{
+	public Token Token;
+	public IExpression Left;
+	public string Operator;
+	public IExpression Right;
+
+    public void ExpressionNode()
+    {
+        throw new NotImplementedException();
+    }
+
+    public string String()
+    {
+		string myString = "";
+		myString += $"(";
+		myString += Left.String();
+		myString += " " + Operator + " ";
+		myString += Right.String();
+		myString += $")";
+		return myString;
+    }
+
+    public string TokenLiteral()
+    {
+		return Token.Literal;
+    }
+}

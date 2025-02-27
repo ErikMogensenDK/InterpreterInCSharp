@@ -4,6 +4,7 @@ public struct Token
 {
     public TokenType Type;
     public string? Literal;
+
     private static Dictionary<string, TokenType> _keyWords = new(){
         {"let", TokenType.LET},
         {"fn", TokenType.FUNCTION},

@@ -1,5 +1,7 @@
 
 
+
+
 namespace InterpreterInCSharp;
 
 public class Parser
@@ -11,6 +13,16 @@ public class Parser
 
 	Token curToken;
 	Token peekToken;
+	Dictionary<TokenType, Precedence> precedences = new(){
+		[TokenType.EQ] = Precedence.EQUALS,
+		[TokenType.NOT_EQ] = Precedence.EQUALS,
+		[TokenType.LT] = Precedence.LESSGREATER,
+		[TokenType.GT] = Precedence.LESSGREATER,
+		[TokenType.PLUS] = Precedence.SUM,
+		[TokenType.MINUS] = Precedence.SUM,
+		[TokenType.SLASH] = Precedence.PRODUCT,
+		[TokenType.ASTERISK] = Precedence.PRODUCT,
+	};
 
 	public Parser(Lexer lexer)
 	{
@@ -21,11 +33,32 @@ public class Parser
 
 		PrefixParseFns = new();
 		RegisterPrefixParseFunction(TokenType.IDENT, ParseIdentifier);
+
+		RegisterPrefixParseFunction(TokenType.INT, ParseInteger);
+		RegisterPrefixParseFunction(TokenType.BANG, ParsePrefixExpression);
+		RegisterPrefixParseFunction(TokenType.MINUS, ParsePrefixExpression);
 	}
 
-	public List<string> Errors()
+	private IExpression ParsePrefixExpression()
 	{
-		return errors;
+		var exp = new PrefixExpression()
+		{
+			Token = curToken,
+			Operator = curToken.Literal,
+		};
+
+		NextToken();
+		exp.Right = ParseExpression((int)Precedence.PREFIX);
+		return exp;
+    }
+
+    private IExpression ParseInteger()
+    {
+		if (!int.TryParse(curToken.Literal, out int result))
+		{
+			errors.Add($"Could not parse {curToken.Literal} as integer");
+		}
+		return new IntegerLiteral() { Token = new() { Type = TokenType.INT, Literal = curToken.Literal }, Value = result };
 	}
 
 	private void peekError(TokenType type)
@@ -85,6 +118,11 @@ public class Parser
 
     private IExpression ParseExpression(int precedence)
     {
+		if (!PrefixParseFns.Keys.Contains(curToken.Type))
+		{
+			NoPrefixParseFnError(curToken.Type);
+			return null;
+		}
 		var prefix = PrefixParseFns[curToken.Type];
 		if (prefix == null)
 		{
@@ -92,6 +130,11 @@ public class Parser
 		}
 		var leftExp = prefix();
 		return leftExp;
+    }
+
+    private void NoPrefixParseFnError(TokenType type)
+    {
+		errors.Add($"No prefix parse function for: '{type}' was found");
     }
 
     private ReturnStatement ParseReturnStatement()
@@ -165,5 +208,10 @@ public class Parser
 	{
 		return new Identifier(){Token = curToken, Value = curToken.Literal};
 	}
+
+	// private int PeekPrecedence()
+	// {
+	// 	if precedences.Keys.Contains()
+	// }
 }
 
