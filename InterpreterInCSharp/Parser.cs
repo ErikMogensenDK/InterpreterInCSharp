@@ -209,9 +209,9 @@ public class Parser
 		return new Identifier(){Token = curToken, Value = curToken.Literal};
 	}
 
-	// private int PeekPrecedence()
-	// {
-	// 	if precedences.Keys.Contains()
-	// }
+	private int PeekPrecedence()
+	{
+		if precedences.Keys.Contains()
+	}
 }
 
