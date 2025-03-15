@@ -211,7 +211,8 @@ public class Parser
 
 	private int PeekPrecedence()
 	{
-		if precedences.Keys.Contains()
+		return 0;
+		if precedences.Keys.Contains();
 	}
 }
 

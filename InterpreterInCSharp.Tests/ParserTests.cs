@@ -218,16 +218,21 @@ public class ParserTests
 		}
 	}
 
-	[DataRow("5 + 5", 5, "+", 5)]
-	[DataRow("5 - 5", 5, "-", 5)]
-	[DataRow("5 * 5", 5, "*", 5)]
-	[DataRow("5 / 5", 5, "/", 5)]
-	[DataRow("5 > 5", 5, ">", 5)]
-	[DataRow("5 < 5", 5, "<", 5)]
-	[DataRow("5 == 5", 5, "==", 5)]
-	[DataRow("5 != 5", 5, "!=", 5)]
-	[DataTestMethod]
-	public void TestInfixParsing(string input, int firstExpectedValue, string expectedOperator, int secondExpectedValue)
+	[TestMethod]
+	public void TestInfixAdd()
+	{
+		InfixParsingTestMethod("5 + 5", 5, "+", 5);
+		InfixParsingTestMethod("5 + 5", 5, "+", 5);
+		InfixParsingTestMethod("5 - 5", 5, "-", 5);
+		InfixParsingTestMethod("5 * 5", 5, "*", 5);
+		InfixParsingTestMethod("5 / 5", 5, "/", 5);
+		InfixParsingTestMethod("5 > 5", 5, ">", 5);
+		InfixParsingTestMethod("5 < 5", 5, "<", 5);
+		InfixParsingTestMethod("5 == 5", 5, "==", 5);
+		InfixParsingTestMethod("5 != 5", 5, "!=", 5);
+	}
+
+	public void InfixParsingTestMethod(string input, int firstExpectedValue, string expectedOperator, int secondExpectedValue)
 	{
 		Lexer l = new(input);
 		Parser p = new(l);
@@ -243,6 +248,7 @@ public class ParserTests
 		TestIntegerLiteral(expression.Left, firstExpectedValue);
 		Assert.AreEqual(expectedOperator, expression.Operator);
 		TestIntegerLiteral(expression.Right, secondExpectedValue);
+
 	}
 
 }
