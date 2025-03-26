@@ -24,6 +24,7 @@ public class Parser
 		[TokenType.ASTERISK] = Precedence.PRODUCT,
 	};
 
+
 	public Parser(Lexer lexer)
 	{
 		l=lexer;
@@ -33,7 +34,6 @@ public class Parser
 
 		PrefixParseFns = new();
 		RegisterPrefixParseFunction(TokenType.IDENT, ParseIdentifier);
-
 		RegisterPrefixParseFunction(TokenType.INT, ParseInteger);
 		RegisterPrefixParseFunction(TokenType.BANG, ParsePrefixExpression);
 		RegisterPrefixParseFunction(TokenType.MINUS, ParsePrefixExpression);
@@ -211,7 +211,9 @@ public class Parser
 
 	private int PeekPrecedence()
 	{
-		if precedences.Keys.Contains();
+		//if precedences.Keys.Contains();
+		//return 0;
+		throw new NotImplementedException();
 	}
 }
 

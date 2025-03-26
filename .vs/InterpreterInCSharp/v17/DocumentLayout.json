@@ -1,0 +1,72 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\erikm\\InterpreterInCSharp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{065B6CAC-DC86-41CD-B78F-E6029CA9A5D4}|InterpreterInCSharp.Tests\\InterpreterInCSharp.Tests.csproj|c:\\users\\erikm\\interpreterincsharp\\interpreterincsharp.tests\\lexertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{065B6CAC-DC86-41CD-B78F-E6029CA9A5D4}|InterpreterInCSharp.Tests\\InterpreterInCSharp.Tests.csproj|solutionrelative:interpreterincsharp.tests\\lexertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A6CEA8C-C76F-4352-9B0F-D2714628963C}|InterpreterInCSharp\\InterpreterInCSharp.csproj|c:\\users\\erikm\\interpreterincsharp\\interpreterincsharp\\interpreterincsharp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9A6CEA8C-C76F-4352-9B0F-D2714628963C}|InterpreterInCSharp\\InterpreterInCSharp.csproj|solutionrelative:interpreterincsharp\\interpreterincsharp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LexerTests.cs",
+              "DocumentMoniker": "C:\\Users\\erikm\\InterpreterInCSharp\\InterpreterInCSharp.Tests\\LexerTests.cs",
+              "RelativeDocumentMoniker": "InterpreterInCSharp.Tests\\LexerTests.cs",
+              "ToolTip": "C:\\Users\\erikm\\InterpreterInCSharp\\InterpreterInCSharp.Tests\\LexerTests.cs",
+              "RelativeToolTip": "InterpreterInCSharp.Tests\\LexerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T14:39:31.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InterpreterInCSharp.csproj",
+              "DocumentMoniker": "C:\\Users\\erikm\\InterpreterInCSharp\\InterpreterInCSharp\\InterpreterInCSharp.csproj",
+              "RelativeDocumentMoniker": "InterpreterInCSharp\\InterpreterInCSharp.csproj",
+              "ToolTip": "C:\\Users\\erikm\\InterpreterInCSharp\\InterpreterInCSharp\\InterpreterInCSharp.csproj",
+              "RelativeToolTip": "InterpreterInCSharp\\InterpreterInCSharp.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-25T14:36:09.923Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 172,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

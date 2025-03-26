@@ -17,7 +17,7 @@ public class Lexer
     private void ReadChar()
     {
         if (_input.Length <= _readPosition)
-            _currentSymbol = '\xff'; // \xff is used as stand-in for null, since char cannot be null
+            _currentSymbol = '\xff'; // \xff is used as stand-in for null
         else
             _currentSymbol = _input[_readPosition];
         _position = _readPosition;
