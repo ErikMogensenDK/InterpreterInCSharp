@@ -38,6 +38,26 @@ public class Parser
 		RegisterPrefixParseFunction(TokenType.BANG, ParsePrefixExpression);
 		RegisterPrefixParseFunction(TokenType.MINUS, ParsePrefixExpression);
 	}
+	public ProgramBaseNode ParseProgram()
+	{
+		var program = new ProgramBaseNode();
+		program.Statements = new();
+
+		while (!CurTokenIs(TokenType.EOF))
+		{
+			IStatement statement = curToken.Type switch{
+				TokenType.LET => ParseLetStatement(),
+				TokenType.RETURN => ParseReturnStatement(),
+				_ => ParseExpressionStatement()
+			};
+
+            if (statement != null)
+				program.Statements.Add(statement);
+
+			NextToken();
+		}
+		return program;
+	}
 
 	private IExpression ParsePrefixExpression()
 	{
@@ -73,36 +93,6 @@ public class Parser
 		peekToken = l.NextToken();
     }
 
-	public ProgramBaseNode ParseProgram()
-	{
-		var program = new ProgramBaseNode();
-		program.Statements = new();
-
-		while (!CurTokenIs(TokenType.EOF))
-		{
-			var statement = ParseStatement();
-			if (statement != null)
-			{
-				program.Statements.Add(statement);
-			}
-			NextToken();
-		}
-		return program;
-	}
-
-    private IStatement ParseStatement()
-    {
-		switch (curToken.Type)
-		{
-			case TokenType.LET:
-				return ParseLetStatement();
-
-			case TokenType.RETURN:
-				return ParseReturnStatement();
-			default: 
-				return ParseExpressionStatement();
-		}
-    }
 
     private IStatement ParseExpressionStatement()
     {
