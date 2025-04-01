@@ -6,7 +6,7 @@ namespace InterpreterInCSharp.Tests;
 public class ParserTests
 {
     [TestMethod]
-    public void ParseProgram_returnsExpectedAst()
+    public void ParseProgram_returnsExpectedAstWithLetStatements()
     {
 		string input = @"
 		let x = 5;
@@ -73,7 +73,6 @@ public class ParserTests
 				Console.WriteLine("Parser Error:");
 				Console.WriteLine(error);
 			}
-			//Assert.IsTrue(false);
 		}
 	}
 
@@ -107,7 +106,6 @@ public class ParserTests
 	[TestMethod]
 	public void TestStringMethods()
 	{
-
 		ProgramBaseNode program = new()
 		{
 			Statements = new(){
@@ -221,18 +219,18 @@ public class ParserTests
 	[TestMethod]
 	public void TestInfixAdd()
 	{
-		InfixParsingTestMethod("5 + 5", 5, "+", 5);
-		InfixParsingTestMethod("5 + 5", 5, "+", 5);
-		InfixParsingTestMethod("5 - 5", 5, "-", 5);
-		InfixParsingTestMethod("5 * 5", 5, "*", 5);
-		InfixParsingTestMethod("5 / 5", 5, "/", 5);
-		InfixParsingTestMethod("5 > 5", 5, ">", 5);
-		InfixParsingTestMethod("5 < 5", 5, "<", 5);
-		InfixParsingTestMethod("5 == 5", 5, "==", 5);
-		InfixParsingTestMethod("5 != 5", 5, "!=", 5);
+		TestInfixParsing("5 + 5", 5, "+", 5);
+		TestInfixParsing("5 + 5", 5, "+", 5);
+		TestInfixParsing("5 - 5", 5, "-", 5);
+		TestInfixParsing("5 * 5", 5, "*", 5);
+		TestInfixParsing("5 / 5", 5, "/", 5);
+		TestInfixParsing("5 > 5", 5, ">", 5);
+		TestInfixParsing("5 < 5", 5, "<", 5);
+		TestInfixParsing("5 == 5", 5, "==", 5);
+		TestInfixParsing("5 != 5", 5, "!=", 5);
 	}
 
-	public void InfixParsingTestMethod(string input, int firstExpectedValue, string expectedOperator, int secondExpectedValue)
+	public void TestInfixParsing(string input, int firstExpectedValue, string expectedOperator, int secondExpectedValue)
 	{
 		Lexer l = new(input);
 		Parser p = new(l);

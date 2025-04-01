@@ -165,7 +165,7 @@ public class ExpressionStatement : IStatement
 }
 
 public delegate IExpression PrefixParseFn();
-public delegate IExpression InfixParseFn(Expression expression);
+public delegate IExpression InfixParseFn(IExpression expression);
 
 
 public enum Precedence

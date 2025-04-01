@@ -37,7 +37,17 @@ public class Parser
 		RegisterPrefixParseFunction(TokenType.INT, ParseInteger);
 		RegisterPrefixParseFunction(TokenType.BANG, ParsePrefixExpression);
 		RegisterPrefixParseFunction(TokenType.MINUS, ParsePrefixExpression);
+		InfixParseFns = new();
+		RegisterInfixParseFunction(TokenType.PLUS, ParseInfixExpression);
+		RegisterInfixParseFunction(TokenType.MINUS, ParseInfixExpression);
+		RegisterInfixParseFunction(TokenType.SLASH, ParseInfixExpression);
+		RegisterInfixParseFunction(TokenType.ASTERISK, ParseInfixExpression);
+		RegisterInfixParseFunction(TokenType.GT, ParseInfixExpression);
+		RegisterInfixParseFunction(TokenType.LT, ParseInfixExpression);
+		RegisterInfixParseFunction(TokenType.EQ, ParseInfixExpression);
+		RegisterInfixParseFunction(TokenType.NOT_EQ, ParseInfixExpression);
 	}
+
 	public ProgramBaseNode ParseProgram()
 	{
 		var program = new ProgramBaseNode();
@@ -45,7 +55,7 @@ public class Parser
 
 		while (!CurTokenIs(TokenType.EOF))
 		{
-			IStatement statement = curToken.Type switch{
+			IStatement statement = curToken.Type switch {
 				TokenType.LET => ParseLetStatement(),
 				TokenType.RETURN => ParseReturnStatement(),
 				_ => ParseExpressionStatement()
@@ -64,13 +74,24 @@ public class Parser
 		var exp = new PrefixExpression()
 		{
 			Token = curToken,
-			Operator = curToken.Literal,
 		};
-
 		NextToken();
+		exp.Operator = curToken.Literal;
+
 		exp.Right = ParseExpression((int)Precedence.PREFIX);
 		return exp;
     }
+
+	private IExpression ParseInfixExpression(IExpression expression)
+	{
+		var res = new InfixExpression() { 
+			Left = expression, 
+			Token = curToken, 
+			Operator = curToken.Literal};
+		NextToken();
+		res.Right = ParseExpression((int)precedences[curToken.Type]);
+		return res;
+	}
 
     private IExpression ParseInteger()
     {
@@ -78,7 +99,9 @@ public class Parser
 		{
 			errors.Add($"Could not parse {curToken.Literal} as integer");
 		}
-		return new IntegerLiteral() { Token = new() { Type = TokenType.INT, Literal = curToken.Literal }, Value = result };
+		var intLiteral = new IntegerLiteral() { Token = new() { Type = TokenType.INT, Literal = curToken.Literal }, Value = result };
+		//NextToken();
+		return intLiteral;
 	}
 
 	private void peekError(TokenType type)
@@ -108,17 +131,31 @@ public class Parser
 
     private IExpression ParseExpression(int precedence)
     {
-		if (!PrefixParseFns.Keys.Contains(curToken.Type))
+		// if (!PrefixParseFns.Keys.Contains(curToken.Type))
+		// {
+		// 	NoPrefixParseFnError(curToken.Type);
+		// 	return null;
+		// }
+
+		var prefix = PrefixParseFns[curToken.Type];
+		if (prefix == null)
 		{
 			NoPrefixParseFnError(curToken.Type);
 			return null;
 		}
-		var prefix = PrefixParseFns[curToken.Type];
-		if (prefix == null)
-		{
-			return null;
-		}
 		var leftExp = prefix();
+
+
+		while (!PeekTokenIs(TokenType.SEMICOLON) && precedence < PeekPrecedence())
+		{
+			var infix = InfixParseFns[curToken.Type];
+			if (infix == null)
+				return leftExp;
+
+			NextToken();
+
+			leftExp = infix(leftExp);
+		}
 		return leftExp;
     }
 
@@ -201,9 +238,11 @@ public class Parser
 
 	private int PeekPrecedence()
 	{
-		//if precedences.Keys.Contains();
-		//return 0;
-		throw new NotImplementedException();
+		if (peekToken.Type == TokenType.EOF)
+			return 0;
+		if (!precedences.Keys.Contains(peekToken.Type))
+			return 0;
+		return (int)precedences[peekToken.Type];
 	}
 }
 
