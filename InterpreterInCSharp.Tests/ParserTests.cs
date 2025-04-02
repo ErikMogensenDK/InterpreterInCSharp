@@ -249,5 +249,33 @@ public class ParserTests
 
 	}
 
+	[TestMethod]
+	public void TestInfixParsingPrecedence()
+	{
+		TestParsingPrecedence("-a * b","((-a) * b)");
+		TestParsingPrecedence("!-a","(!(-a))");
+		TestParsingPrecedence("a + b + c","((a + b) + c)");
+		TestParsingPrecedence("a + b - c","((a + b) - c)");
+		TestParsingPrecedence("a * b * c","((a * b) * c)");
+		TestParsingPrecedence("a * b / c","((a * b) / c)");
+		TestParsingPrecedence("a + b / c","(a + (b / c))");
+		TestParsingPrecedence("a + b * c + d / e - f", "(((a + (b * c)) + (d / e)) - f)");
+		TestParsingPrecedence("3 + 4; -5 * 5", "(3 + 4)((-5) * 5)");
+		TestParsingPrecedence("5 > 4 == 3 < 4", "((5 > 4) == (3 < 4))");
+		TestParsingPrecedence("5 < 4 != 3 > 4", "((5 < 4) != (3 > 4))");
+		TestParsingPrecedence("3 + 4 * 5 == 3 * 1 + 4 * 5", "((3 + (4 * 5)) == ((3 * 1) + (4 * 5)))");
+	}
+
+	private void TestParsingPrecedence(string input, string expectedOutput)
+	{
+		Lexer l = new(input);
+		Parser p = new(l);
+		var program = p.ParseProgram();
+		CheckForParserErrors(p);
+
+		var actual = program.String();
+		Assert.AreEqual(expectedOutput, actual);
+	}
 }
+
 

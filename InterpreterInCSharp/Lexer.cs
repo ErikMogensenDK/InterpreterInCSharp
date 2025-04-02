@@ -17,7 +17,7 @@ public class Lexer
     private void ReadChar()
     {
         if (_input.Length <= _readPosition)
-            _currentSymbol = '\xff'; // \xff is used as stand-in for null
+            _currentSymbol = '\uFFFD'; // _ is used as stand-in for null
         else
             _currentSymbol = _input[_readPosition];
         _position = _readPosition;
@@ -78,7 +78,7 @@ public class Lexer
                     token = new(TokenType.PLUS, _currentSymbol.ToString());
                     break;
                 }
-            case '\xff':
+            case '\uFFFD':
                 {
                     token = new(TokenType.EOF, "");
                     break;

@@ -215,7 +215,7 @@ public class PrefixExpression : IExpression
 
     public string String()
     {
-		return Token.Literal;
+		return TokenLiteral();
     }
 
     public string TokenLiteral()

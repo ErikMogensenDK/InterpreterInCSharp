@@ -75,8 +75,8 @@ public class Parser
 		{
 			Token = curToken,
 		};
-		NextToken();
 		exp.Operator = curToken.Literal;
+		NextToken();
 
 		exp.Right = ParseExpression((int)Precedence.PREFIX);
 		return exp;
@@ -88,8 +88,12 @@ public class Parser
 			Left = expression, 
 			Token = curToken, 
 			Operator = curToken.Literal};
+
+		if(!precedences.TryGetValue(curToken.Type, out var curPrecedence))
+			curPrecedence = Precedence.LOWEST;
 		NextToken();
-		res.Right = ParseExpression((int)precedences[curToken.Type]);
+
+		res.Right = ParseExpression((int)curPrecedence);
 		return res;
 	}
 
@@ -131,14 +135,7 @@ public class Parser
 
     private IExpression ParseExpression(int precedence)
     {
-		// if (!PrefixParseFns.Keys.Contains(curToken.Type))
-		// {
-		// 	NoPrefixParseFnError(curToken.Type);
-		// 	return null;
-		// }
-
-		var prefix = PrefixParseFns[curToken.Type];
-		if (prefix == null)
+		if(!PrefixParseFns.TryGetValue(curToken.Type, out var prefix))
 		{
 			NoPrefixParseFnError(curToken.Type);
 			return null;
@@ -148,8 +145,9 @@ public class Parser
 
 		while (!PeekTokenIs(TokenType.SEMICOLON) && precedence < PeekPrecedence())
 		{
-			var infix = InfixParseFns[curToken.Type];
-			if (infix == null)
+			//IExpression infix;
+			//var infix = InfixParseFns[curToken.Type];
+			if (!InfixParseFns.TryGetValue(peekToken.Type, out var infix))
 				return leftExp;
 
 			NextToken();
