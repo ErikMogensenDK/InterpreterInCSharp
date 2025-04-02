@@ -131,24 +131,7 @@ public class Parser
 
     private IExpression ParseExpression(int precedence)
     {
-		if(!PrefixParseFns.TryGetValue(curToken.Type, out var prefix))
-		{
-			NoPrefixParseFnError(curToken.Type);
-			return null;
-		}
-		var leftExp = prefix();
-
-
-		while (!PeekTokenIs(TokenType.SEMICOLON) && precedence < PeekPrecedence())
-		{
-			if (!InfixParseFns.TryGetValue(peekToken.Type, out var infix))
-				return leftExp;
-
-			NextToken();
-
-			leftExp = infix(leftExp);
-		}
-		return leftExp;
+		throw new NotImplementedException();
     }
 
     private void NoPrefixParseFnError(TokenType type)
