@@ -1,7 +1,3 @@
-
-
-
-
 namespace InterpreterInCSharp;
 
 public class Parser
@@ -104,7 +100,7 @@ public class Parser
 			errors.Add($"Could not parse {curToken.Literal} as integer");
 		}
 		var intLiteral = new IntegerLiteral() { Token = new() { Type = TokenType.INT, Literal = curToken.Literal }, Value = result };
-		//NextToken();
+
 		return intLiteral;
 	}
 
@@ -145,8 +141,6 @@ public class Parser
 
 		while (!PeekTokenIs(TokenType.SEMICOLON) && precedence < PeekPrecedence())
 		{
-			//IExpression infix;
-			//var infix = InfixParseFns[curToken.Type];
 			if (!InfixParseFns.TryGetValue(peekToken.Type, out var infix))
 				return leftExp;
 
