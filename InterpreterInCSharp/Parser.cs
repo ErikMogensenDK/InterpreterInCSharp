@@ -131,7 +131,22 @@ public class Parser
 
     private IExpression ParseExpression(int precedence)
     {
-		throw new NotImplementedException();
+		if(!PrefixParseFns.TryGetValue(curToken.Type, out var prefixFn))
+		{
+			NoPrefixParseFnError(curToken.Type);
+			return null;
+		}
+		var left = prefixFn();
+
+		while (precedence < PeekPrecedence())
+		{
+			if(!InfixParseFns.TryGetValue(peekToken.Type, out var infixFn))
+				return left;
+
+			NextToken();
+			left = infixFn(left);
+		}
+		return left;
     }
 
     private void NoPrefixParseFnError(TokenType type)
