@@ -224,6 +224,7 @@ public class Parser
 	private IExpression ParseIdentifier()
 	{
 		return new Identifier(){Token = curToken, Value = curToken.Literal};
+
 	}
 
 	private int PeekPrecedence()
